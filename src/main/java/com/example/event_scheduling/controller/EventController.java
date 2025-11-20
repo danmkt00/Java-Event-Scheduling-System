@@ -33,6 +33,12 @@ public class EventController
         return ResponseEntity.ok(dto);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<EventResponseDTO> getEventById(@PathVariable Long id) {
+        EventResponseDTO dto = eventService.getEventById(id);
+        return ResponseEntity.ok(dto);
+    }
+
     @PostMapping
     public ResponseEntity<?> createEvent(@Valid @RequestBody EventRequestDTO eventRequestDTO)
     {

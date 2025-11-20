@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventService
@@ -25,6 +26,15 @@ public class EventService
     public List<EventResponseDTO> getAllEvents()
     {
         return eventRepository.findAll().stream().map(eventMapper::convertFromEntityToEventResponseDto).toList();
+    }
+
+    public EventResponseDTO getEventById(Long id)
+    {
+        Event event = eventRepository.findById(id)
+                .orElseThrow(() -> new EventNotFoundException("Event not found with id: " + id));
+
+        return eventMapper.convertFromEntityToEventResponseDto(event);
+
     }
 
     public EventResponseDTO createEvent(EventRequestDTO eventRequestDTO) {

@@ -41,6 +41,14 @@ public class GlobalExceptionHandler
         return errors;
     }
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(EventNotFoundException.class)
+    public Map<String, String> handleEventNotFoundException(EventNotFoundException ex) {
+        Map<String, String> errors = new HashMap<>();
+        errors.put("Error", ex.getMessage());
+        return errors;
+    }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ConstraintViolationException.class)
     public Map<String, String> handleConstraintViolation(ConstraintViolationException ex)
