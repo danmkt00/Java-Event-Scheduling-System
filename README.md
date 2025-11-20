@@ -14,7 +14,7 @@ Supports creating events, validating input, enforcing capacity rules, and listin
   - Capacity ≥ 1  
   - Prevent exceeding capacity  
 - DTO → Mapper → Entity workflow  
-- Custom exceptions: `EventDateInPastException`, `EventEndBeforeStartException`  
+- Custom exceptions: `EventDateInPastException`, `EventEndBeforeStartException`, `EventNotFoundException`
 
 ---
 
